@@ -17,7 +17,7 @@
     },
     {
       "src": "/(?!api)(.*)",
-      "dest": "/build/$1"
+      "dest": "build/$1"
     }
   ]
 }

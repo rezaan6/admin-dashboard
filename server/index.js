@@ -38,10 +38,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /* ROUTES */
-app.use("/client", clientRoutes);
-app.use("/general", generalRoutes);
-app.use("/management", managementRoutes);
-app.use("/sales", salesRoutes);
+app.use("/api/client", clientRoutes);
+app.use("/api/general", generalRoutes);
+app.use("/api/management", managementRoutes);
+app.use("/api/sales", salesRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;

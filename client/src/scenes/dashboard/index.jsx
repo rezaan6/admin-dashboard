@@ -16,10 +16,12 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import reportUrl from 'assets/Report.xlsx';
 import BreakdownChart from "components/BreakdownChart";
 import OverviewChart from "components/OverviewChart";
 import { useGetDashboardQuery } from "state/api";
 import StatBox from "components/StatBox";
+
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -63,7 +65,14 @@ const Dashboard = () => {
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         <Box>
-          <Button
+          <Button onClick={() => {
+              const link = document.createElement('a');
+              link.href = reportUrl;
+              link.download = 'Report.xlsx';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+          }}
             sx={{
               backgroundColor: theme.palette.secondary.light,
               color: theme.palette.background.alt,

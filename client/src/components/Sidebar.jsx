@@ -142,7 +142,7 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
-            <List>
+            <List sx={{paddingBottom:"100px"}}>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
@@ -193,7 +193,7 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box paddingBottom="2rem">
+          <Box position="fixed" bottom={'0'} paddingBottom="1.5rem" sx={{ backgroundColor: theme.palette.background.alt, width: 'inherit' }}>
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
@@ -220,12 +220,12 @@ const Sidebar = ({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
+              {/* <SettingsOutlined
                 sx={{
                   color: theme.palette.secondary[300],
                   fontSize: "25px ",
                 }}
-              />
+              /> */}
             </FlexBetween>
           </Box>
         </Drawer>

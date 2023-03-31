@@ -24,8 +24,6 @@ The dashboard provides insights into three main **categories** of information:
 
 The React dashboard application utilizes several chart libraries from Nivo to create visualizations for the data. Specifically, it uses the following Nivo chart libraries:
 
-- @nivo/bar for creating bar charts
-- @nivo/core for providing common chart components and utilities
 - @nivo/geo for creating geographical maps and charts
 - @nivo/line for creating line charts
 - @nivo/pie for creating pie charts
@@ -39,9 +37,6 @@ These chart libraries provide a variety of customizable chart components and uti
 - [MongoDB](https://www.mongodb.com/)
 - [Prettier](https://prettier.io/)
 - [Nivo](https://nivo.rocks/)
-    - geo
-    - line
-    - pie
 - [ExpressJS](https://expressjs.com/)
 - [Material UI](https://mui.com/)
 - [Vercel](https://vercel.com/docs)

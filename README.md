@@ -39,8 +39,6 @@ These chart libraries provide a variety of customizable chart components and uti
 - [MongoDB](https://www.mongodb.com/)
 - [Prettier](https://prettier.io/)
 - [Nivo](https://nivo.rocks/)
-    - bar
-    - core
     - geo
     - line
     - pie

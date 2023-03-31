@@ -27,14 +27,8 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         const curSales = acc.sales + totalSales;
         const curUnits = acc.units + totalUnits;
 
-        totalSalesLine.data = [
-          ...totalSalesLine.data,
-          { x: month, y: curSales },
-        ];
-        totalUnitsLine.data = [
-          ...totalUnitsLine.data,
-          { x: month, y: curUnits },
-        ];
+        totalSalesLine.data = [...totalSalesLine.data, { x: month, y: curSales }];
+        totalUnitsLine.data = [...totalUnitsLine.data, { x: month, y: curUnits }];
 
         return { sales: curSales, units: curUnits };
       },
@@ -115,9 +109,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard
-          ? ""
-          : `Total ${view === "sales" ? "Revenue" : "Units"} for Year`,
+        legend: isDashboard ? "" : `Total ${view === "sales" ? "Revenue" : "Units"} for Year`,
         legendOffset: -60,
         legendPosition: "middle",
       }}

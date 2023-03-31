@@ -15,14 +15,12 @@ const BreakdownChart = ({ isDashboard = false }) => {
     theme.palette.secondary[300],
     theme.palette.secondary[500],
   ];
-  const formattedData = Object.entries(data.salesByCategory).map(
-    ([category, sales], i) => ({
-      id: category,
-      label: category,
-      value: sales,
-      color: colors[i],
-    })
-  );
+  const formattedData = Object.entries(data.salesByCategory).map(([category, sales], i) => ({
+    id: category,
+    label: category,
+    value: sales,
+    color: colors[i],
+  }));
 
   return (
     <Box
@@ -124,9 +122,7 @@ const BreakdownChart = ({ isDashboard = false }) => {
         textAlign="center"
         pointerEvents="none"
         sx={{
-          transform: isDashboard
-            ? "translate(-75%, -170%)"
-            : "translate(-50%, -100%)",
+          transform: isDashboard ? "translate(-75%, -170%)" : "translate(-50%, -100%)",
         }}
       >
         <Typography variant="h6">

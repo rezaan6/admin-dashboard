@@ -24,14 +24,8 @@ const Monthly = () => {
     };
 
     Object.values(monthlyData).forEach(({ month, totalSales, totalUnits }) => {
-      totalSalesLine.data = [
-        ...totalSalesLine.data,
-        { x: month, y: totalSales },
-      ];
-      totalUnitsLine.data = [
-        ...totalUnitsLine.data,
-        { x: month, y: totalUnits },
-      ];
+      totalSalesLine.data = [...totalSalesLine.data, { x: month, y: totalSales }];
+      totalUnitsLine.data = [...totalUnitsLine.data, { x: month, y: totalUnits }];
     });
 
     const formattedData = [totalSalesLine, totalUnitsLine];

@@ -92,13 +92,7 @@ const navItems = [
   },
 ];
 
-const Sidebar = ({
-  user,
-  drawerWidth,
-  isSidebarOpen,
-  setIsSidebarOpen,
-  isNonMobile,
-}) => {
+const Sidebar = ({ user, drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile }) => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
@@ -142,7 +136,7 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
-            <List sx={{paddingBottom:"100px"}}>
+            <List sx={{ paddingBottom: "100px" }}>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
@@ -162,9 +156,7 @@ const Sidebar = ({
                       }}
                       sx={{
                         backgroundColor:
-                          active === lcText
-                            ? theme.palette.secondary[300]
-                            : "transparent",
+                          active === lcText ? theme.palette.secondary[300] : "transparent",
                         color:
                           active === lcText
                             ? theme.palette.primary[600]
@@ -183,9 +175,7 @@ const Sidebar = ({
                         {icon}
                       </ListItemIcon>
                       <ListItemText primary={text} />
-                      {active === lcText && (
-                        <ChevronRightOutlined sx={{ ml: "auto" }} />
-                      )}
+                      {active === lcText && <ChevronRightOutlined sx={{ ml: "auto" }} />}
                     </ListItemButton>
                   </ListItem>
                 );
@@ -193,7 +183,12 @@ const Sidebar = ({
             </List>
           </Box>
 
-          <Box position="fixed" bottom={'0'} paddingBottom="1.5rem" sx={{ backgroundColor: theme.palette.background.alt, width: 'inherit' }}>
+          <Box
+            position="fixed"
+            bottom={"0"}
+            paddingBottom="1.5rem"
+            sx={{ backgroundColor: theme.palette.background.alt, width: "inherit" }}
+          >
             <Divider />
             <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
               <Box
@@ -213,10 +208,7 @@ const Sidebar = ({
                 >
                   {user.name}
                 </Typography>
-                <Typography
-                  fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
+                <Typography fontSize="0.8rem" sx={{ color: theme.palette.secondary[200] }}>
                   {user.occupation}
                 </Typography>
               </Box>

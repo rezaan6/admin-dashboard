@@ -1,27 +1,14 @@
 import React from "react";
 import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
-import {
-  DownloadOutlined,
-  Email,
-  PointOfSale,
-  PersonAdd,
-  Traffic,
-} from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { DownloadOutlined, Email, PointOfSale, PersonAdd, Traffic } from "@mui/icons-material";
+import { Box, Button, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
-import reportUrl from 'assets/Report.xlsx';
+import reportUrl from "assets/Report.xlsx";
 import BreakdownChart from "components/BreakdownChart";
 import OverviewChart from "components/OverviewChart";
 import { useGetDashboardQuery } from "state/api";
 import StatBox from "components/StatBox";
-
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -65,14 +52,15 @@ const Dashboard = () => {
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         <Box>
-          <Button onClick={() => {
-              const link = document.createElement('a');
+          <Button
+            onClick={() => {
+              const link = document.createElement("a");
               link.href = reportUrl;
-              link.download = 'Report.xlsx';
+              link.download = "Report.xlsx";
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
-          }}
+            }}
             sx={{
               backgroundColor: theme.palette.secondary.light,
               color: theme.palette.background.alt,
@@ -103,22 +91,14 @@ const Dashboard = () => {
           value={data && data.totalCustomers}
           increase="+14%"
           description="Since last month"
-          icon={
-            <Email
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          icon={<Email sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
         />
         <StatBox
           title="Sales Today"
           value={data && data.todayStats.totalSales}
           increase="+21%"
           description="Since last month"
-          icon={
-            <PointOfSale
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          icon={<PointOfSale sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
         />
         <Box
           gridColumn="span 8"
@@ -134,22 +114,14 @@ const Dashboard = () => {
           value={data && data.thisMonthStats.totalSales}
           increase="+5%"
           description="Since last month"
-          icon={
-            <PersonAdd
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          icon={<PersonAdd sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
         />
         <StatBox
           title="Yearly Sales"
           value={data && data.yearlySalesTotal}
           increase="+43%"
           description="Since last month"
-          icon={
-            <Traffic
-              sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
-            />
-          }
+          icon={<Traffic sx={{ color: theme.palette.secondary[300], fontSize: "26px" }} />}
         />
 
         {/* ROW 2 */}
@@ -200,13 +172,9 @@ const Dashboard = () => {
             Sales By Category
           </Typography>
           <BreakdownChart isDashboard={true} />
-          <Typography
-            p="0 0.6rem"
-            fontSize="0.8rem"
-            sx={{ color: theme.palette.secondary[200] }}
-          >
-            Breakdown of real states and information via category for revenue
-            made for this year and total sales.
+          <Typography p="0 0.6rem" fontSize="0.8rem" sx={{ color: theme.palette.secondary[200] }}>
+            Breakdown of real states and information via category for revenue made for this year and
+            total sales.
           </Typography>
         </Box>
       </Box>

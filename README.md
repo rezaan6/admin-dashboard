@@ -14,13 +14,13 @@
 
 A React dashboard application built with Create React App that uses MongoDB for database storage and ExpressJS for server-side logic. The application also utilizes Mongoose for database modeling, React Date Picker for handling dates, and Redux Toolkit for state management.
 
-The dashboard provides insights into three main categories of information:
+The dashboard provides insights into three main **categories** of information:
 
-- `Client-facing category` - This category includes data related to products, customers, transactions, and geographic information. This section of the dashboard is intended to provide a view into how your company is performing from the perspective of your clients.
+- `Client-facing` - This category includes data related to products, customers, transactions, and geographic information. This section of the dashboard is intended to provide a view into how your company is performing from the perspective of your clients.
 
-- `Sales categories` - This category includes an overview of sales, as well as breakdowns of daily and monthly sales. These views help provide insight into how your business is performing over time and can help identify trends and areas for improvement.
+- `Sales` - This category includes an overview of sales, as well as breakdowns of daily and monthly sales. These views help provide insight into how your business is performing over time and can help identify trends and areas for improvement.
 
-- `Management category` - This category includes an admin view, as well as performance metrics. This section of the dashboard is intended for managers to have a high-level view of company performance and manage key aspects of the business.
+- `Management` - This category includes an admin view, as well as performance metrics. This section of the dashboard is intended for managers to have a high-level view of company performance and manage key aspects of the business.
 
 The React dashboard application utilizes several chart libraries from Nivo to create visualizations for the data. Specifically, it uses the following Nivo chart libraries:
 
@@ -52,7 +52,14 @@ These chart libraries provide a variety of customizable chart components and uti
 
 ## Features (wait until GIFs load)
 
-- View list of images
+- Dark and Light Mode
+- Download Report
+- View Summary 
+- Minimize side menu
+- MUI Data Grid Table, including search, filter, export, pagination, server side rendering and row density options.
+- Nivo Geo Chart
+- Nivo Line Chart
+- Nivo Pie Chart
 
 
 

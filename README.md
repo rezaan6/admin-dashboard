@@ -3,22 +3,34 @@
 ## Table of Contents
 
 - [Description](#description)
-    - [Client](#client)
-    - [Server](#server)
 - [Tech Stack](#tech-stack)
 - [Features](#features-wait-until-gifs-load)
-- [Open AI DALL·E 2 API](#open-ai-dall-e-2-api)
 - [Database Structure](#database-structure)
-    - [MongoDB](#mongodb)
-    - [Cloudinary](#cloudinary)
 - [Format Configuration](#format-configuration)
 - [Folder Structure](#folder-structure)
 - [Environment Variables](#environment-variables)
 
 ## Description
 
-A React Admin application, where summary off the sales, transcation, diagrams and many more are shown, through each section. The application contains two folder
-, one is the client for running the application and the server is made using expressJS.
+A React dashboard application built with Create React App that uses MongoDB for database storage and ExpressJS for server-side logic. The application also utilizes Mongoose for database modeling, React Date Picker for handling dates, and Redux Toolkit for state management.
+
+The dashboard provides insights into three main categories of information:
+
+- `Client-facing category` - This category includes data related to products, customers, transactions, and geographic information. This section of the dashboard is intended to provide a view into how your company is performing from the perspective of your clients.
+
+- `Sales categories` - This category includes an overview of sales, as well as breakdowns of daily and monthly sales. These views help provide insight into how your business is performing over time and can help identify trends and areas for improvement.
+
+- `Management category` - This category includes an admin view, as well as performance metrics. This section of the dashboard is intended for managers to have a high-level view of company performance and manage key aspects of the business.
+
+The React dashboard application utilizes several chart libraries from Nivo to create visualizations for the data. Specifically, it uses the following Nivo chart libraries:
+
+- @nivo/bar for creating bar charts
+- @nivo/core for providing common chart components and utilities
+- @nivo/geo for creating geographical maps and charts
+- @nivo/line for creating line charts
+- @nivo/pie for creating pie charts
+
+These chart libraries provide a variety of customizable chart components and utilities, making it easy to create professional-looking visualizations for the data in the dashboard.
 
 ## Tech Stack
 
@@ -27,9 +39,16 @@ A React Admin application, where summary off the sales, transcation, diagrams an
 - [MongoDB](https://www.mongodb.com/)
 - [Prettier](https://prettier.io/)
 - [Nivo](https://nivo.rocks/)
+    - bar
+    - core
+    - geo
+    - line
+    - pie
 - [ExpressJS](https://expressjs.com/)
 - [Material UI](https://mui.com/)
 - [Vercel](https://vercel.com/docs)
+- [Redux Toolkit](https://redux-toolkit.js.org)
+- [React Date Picker](https://github.com/Hacker0x01/react-datepicker)
 
 ## Features (wait until GIFs load)
 
@@ -52,59 +71,61 @@ A React Admin application, where summary off the sales, transcation, diagrams an
     },
   },
   { timestamps: true }
-);
+
       
 ```
 
-- `AffiliateStat.js`
+- `OverallStat.js`
 
 ```
     {
-    userId: { type: mongoose.Types.ObjectId, ref: "User" },
-    affiliateSales: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Transaction",
+    totalCustomers: Number,
+    yearlySalesTotal: Number,
+    yearlyTotalSoldUnits: Number,
+    year: Number,
+    monthlyData: [
+      {
+        month: String,
+        totalSales: Number,
+        totalUnits: Number,
+      },
+    ],
+    dailyData: [
+      {
+        date: String,
+        totalSales: Number,
+        totalUnits: Number,
+      },
+    ],
+    salesByCategory: {
+      type: Map,
+      of: Number,
     },
   },
   { timestamps: true }
-);
       
 ```
 
-- `AffiliateStat.js`
+- `Product.js`
 
 ```
     {
-    userId: { type: mongoose.Types.ObjectId, ref: "User" },
-    affiliateSales: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Transaction",
-    },
+    name: String,
+    price: Number,
+    description: String,
+    category: String,
+    rating: Number,
+    supply: Number,
   },
   { timestamps: true }
-);
-      
-```
 
-- `AffiliateStat.js`
-
-```
-    {
-    userId: { type: mongoose.Types.ObjectId, ref: "User" },
-    affiliateSales: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Transaction",
-    },
-  },
-  { timestamps: true }
-);
       
 ```
 
 - `ProductStat.js`
 
 ```
-  {
+    {
     productId: String,
     yearlySalesTotal: Number,
     yearlyTotalSoldUnits: Number,
@@ -125,10 +146,60 @@ A React Admin application, where summary off the sales, transcation, diagrams an
     ],
   },
   { timestamps: true }
-);
       
 ```
 
+- `Transaction.js`
+
+```
+ {
+    userId: String,
+    cost: String,
+    products: {
+      type: [mongoose.Types.ObjectId],
+      of: Number,
+    },
+  },
+  { timestamps: true }
+      
+```
+
+- `User.js`
+
+```
+   {
+    name: {
+      type: String,
+      required: true,
+      min: 2,
+      max: 100,
+    },
+    email: {
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      min: 5,
+    },
+    city: String,
+    state: String,
+    country: String,
+    occupation: String,
+    phoneNumber: String,
+    transactions: Array,
+    role: {
+      type: String,
+      enum: ["user", "admin", "superadmin"],
+      default: "admin",
+    },
+  },
+  { timestamps: true }
+      
+```
 
 ## Format Configuration
 ```
@@ -148,71 +219,99 @@ A React Admin application, where summary off the sales, transcation, diagrams an
 ```
 .
 |-- client
-|   |-- index.html        
-|   |-- package-lock.json 
-|   |-- package.json      
-|   |-- postcss.config.cjs
+|   |-- jsconfig.json
+|   |-- package-lock.json
+|   |-- package.json
 |   |-- public
-|   |   `-- vite.svg      
-|   |-- src
-|   |   |-- App.css
-|   |   |-- App.tsx
-|   |   |-- assets
-|   |   |   |-- download.png
-|   |   |   |-- index.js
-|   |   |   |-- logo.svg
-|   |   |   `-- preview.png
-|   |   |-- components
-|   |   |   |-- Card.tsx
-|   |   |   |-- FormField.tsx
-|   |   |   |-- Loader.tsx
-|   |   |   `-- index.ts
-|   |   |-- constants
-|   |   |   `-- index.ts
-|   |   |-- index.css
-|   |   |-- main.tsx
-|   |   |-- pages
-|   |   |   |-- CreatePost.tsx
-|   |   |   |-- Home.tsx
-|   |   |   `-- index.js
-|   |   `-- utils
-|   |       `-- index.ts
-|   |-- tailwind.config.cjs
-|   `-- vite.config.js
+|   |   |-- favicon.ico
+|   |   |-- index.html
+|   |   |-- logo192.png
+|   |   |-- logo512.png
+|   |   |-- manifest.json
+|   |   `-- robots.txt
+|   `-- src
+|       |-- App.js
+|       |-- assets
+|       |   |-- Report.xlsx
+|       |   `-- profile.jpeg
+|       |-- components
+|       |   |-- BreakdownChart.jsx
+|       |   |-- DataGridCustomColumnMenu.jsx
+|       |   |-- DataGridCustomToolbar.jsx
+|       |   |-- FlexBetween.jsx
+|       |   |-- Header.jsx
+|       |   |-- Navbar.jsx
+|       |   |-- OverviewChart.jsx
+|       |   |-- Sidebar.jsx
+|       |   `-- StatBox.jsx
+|       |-- index.css
+|       |-- index.js
+|       |-- scenes
+|       |   |-- admin
+|       |   |   `-- index.jsx
+|       |   |-- breakdown
+|       |   |   `-- index.jsx
+|       |   |-- customers
+|       |   |   `-- index.jsx
+|       |   |-- daily
+|       |   |   `-- index.jsx
+|       |   |-- dashboard
+|       |   |   `-- index.jsx
+|       |   |-- geography
+|       |   |   `-- index.jsx
+|       |   |-- layout
+|       |   |   `-- index.jsx
+|       |   |-- monthly
+|       |   |   `-- index.jsx
+|       |   |-- overview
+|       |   |   `-- index.jsx
+|       |   |-- performance
+|       |   |   `-- index.jsx
+|       |   |-- products
+|       |   |   `-- index.jsx
+|       |   `-- transactions
+|       |       `-- index.jsx
+|       |-- state
+|       |   |-- api.js
+|       |   |-- geoData.js
+|       |   `-- index.js
+|       `-- theme.js
 `-- server
+    |-- controllers
+    |   |-- client.js
+    |   |-- general.js
+    |   |-- management.js
+    |   `-- sales.js
+    |-- data
+    |   `-- index.js
     |-- index.js
-    |-- mongodb
-    |   |-- connect.js
-    |   `-- models
-    |       `-- post.js
+    |-- models
+    |   |-- AffiliateStat.js
+    |   |-- OverallStat.js
+    |   |-- Product.js
+    |   |-- ProductStat.js
+    |   |-- Transaction.js
+    |   `-- User.js
     |-- package-lock.json
     |-- package.json
-    `-- routes
-        |-- dalleRoutes.js
-        `-- postRoutes.js
+    |-- routes
+    |   |-- client.js
+    |   |-- general.js
+    |   |-- management.js
+    |   `-- sales.js
+    `-- vercel.json
 
 ```
 
 ## Environment Variables
 
-- Generate a key from Open AI.
+- For `client` folder to connect to the server
 ```
-OPENAI_API_KEY=
+REACT_APP_BASE_URL=
 ```
 
 - Generate using your DB cluster connect option.
 ```
 MONGODB_URL=
+PORT=5001
 ```
-
-- Generated on the dashboard of Cloudinary under the section "Product Environment Credentials".
-```
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-```
-
-
-
-
-

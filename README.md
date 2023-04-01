@@ -46,12 +46,23 @@ These chart libraries provide a variety of customizable chart components and uti
 ## Features (wait until GIFs load)
 
 - Dark and Light Mode
+![Light and Dark](https://user-images.githubusercontent.com/72515147/229294523-6a8363d3-63fd-4b39-9278-7122afda9465.gif)
+
 - Download Report
+![Download Report](https://user-images.githubusercontent.com/72515147/229294537-0371cfe7-8c0d-4041-afa5-fcf6ed4ca0fb.gif)
+
 - View Summary 
+![Dashboard](https://user-images.githubusercontent.com/72515147/229294550-7bd6412f-0651-43a0-836f-e3f19d85823d.gif)
+
 - Minimize side menu
+![SideMenu Collapse](https://user-images.githubusercontent.com/72515147/229294557-8a47da23-2f77-4c33-b34a-3484fe420387.gif)
+
 - MUI Data Grid Table, including search, filter, export, pagination, server side rendering and row density options.
+
 - Nivo Geo Chart
+
 - Nivo Line Chart
+
 - Nivo Pie Chart
 
 

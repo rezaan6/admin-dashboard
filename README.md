@@ -58,14 +58,16 @@ These chart libraries provide a variety of customizable chart components and uti
 ![SideMenu Collapse](https://user-images.githubusercontent.com/72515147/229294557-8a47da23-2f77-4c33-b34a-3484fe420387.gif)
 
 - MUI Data Grid Table, including search, filter, export, pagination, server side rendering and row density options.
+![Table](https://user-images.githubusercontent.com/72515147/229295566-f43e9d62-b59b-4b46-9606-93f2ea5ac4fe.gif)
 
 - Nivo Geo Chart
+![Geo Chart](https://user-images.githubusercontent.com/72515147/229295202-c489a36c-82fe-4642-8b65-3f6bf4f2eedb.gif)
 
 - Nivo Line Chart
+![Line Chart](https://user-images.githubusercontent.com/72515147/229295215-260b9f25-40e2-4482-b9b1-6d4815b56425.gif)
 
 - Nivo Pie Chart
-
-
+![Pie Chart](https://user-images.githubusercontent.com/72515147/229295253-ff98ce4f-f41b-481f-9dff-c5b83f70803c.gif)
 
 ## Database Structure
 
